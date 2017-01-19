@@ -8,7 +8,7 @@ public class Main {
 			UserDao dao = new UserDao();
 			User newUser = new User();
 			
-			newUser.setId("t2");
+			newUser.setId("t3");
 			newUser.setPw("ttt");
 			newUser.setName("name");
 			
@@ -17,7 +17,7 @@ public class Main {
 			
 			User currentUser = dao.getUser(newUser.getId());
 			
-			System.out.println(currentUser.getId() + currentUser.getPw() + currentUser.getName());
+			System.out.println(currentUser.getId() + "|" + currentUser.getPw() + "|" + currentUser.getName());
 					
 						
 			

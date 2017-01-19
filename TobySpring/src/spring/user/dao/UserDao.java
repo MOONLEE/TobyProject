@@ -12,12 +12,7 @@ public class UserDao {
 	
 	
 	public int setUser(User user) throws ClassNotFoundException , SQLException {
-		Class.forName("org.mariadb.jdbc.Driver");
-		String url = "jdbc:mysql://127.0.0.1/springboard";
-		String id = "springboard";
-		String pw = "qwer!@34";
-		
-		Connection conn = DriverManager.getConnection(url, id, pw);
+		Connection conn = getConnnection();
 		
 		PreparedStatement pstmt = conn.prepareStatement(
 				"INSERT INTO USERS (ID, PW, NAME) VALUES (? , ? , ?)"
@@ -39,14 +34,8 @@ public class UserDao {
 	
 	
 	public User getUser(String userId) throws ClassNotFoundException, SQLException {
-		Class.forName("org.mariadb.jdbc.Driver");
-		String url = "jdbc:mysql://127.0.0.1/springboard";
-		String id = "springboard";
-		String pw = "qwer!@34";
 		
-
-		Connection conn = DriverManager.getConnection(url, id, pw);
-		
+		Connection conn = getConnnection();
 		PreparedStatement pstmt = conn.prepareStatement(
 				"SELECT * FROM USERS WHERE ID = ?"
 				);
@@ -70,4 +59,16 @@ public class UserDao {
 	}
 	
 
+	private Connection getConnnection() throws ClassNotFoundException, SQLException {
+		Class.forName("org.mariadb.jdbc.Driver");
+		String url = "jdbc:mysql://127.0.0.1/springboard";
+		String id = "springboard";
+		String pw = "qwer!@34";
+		
+
+		Connection conn = DriverManager.getConnection(url, id, pw);		
+		
+		return conn;
+	}
+	
 }
