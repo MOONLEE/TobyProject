@@ -1,4 +1,5 @@
-import spring.user.dao.BUserDao;
+import spring.user.connection.BConnectionMaker;
+import spring.user.connection.ConnectionMaker;
 import spring.user.dao.UserDao;
 import spring.user.domain.User;
 
@@ -6,10 +7,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			UserDao dao = new BUserDao();
+			ConnectionMaker conn = new BConnectionMaker();
+			
+			UserDao dao = new UserDao(conn) {
+			};
 			User newUser = new User();
 			
-			newUser.setId("t3");
+			newUser.setId("t4");
 			newUser.setPw("ttt");
 			newUser.setName("name");
 			

@@ -1,18 +1,24 @@
 package spring.user.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import spring.user.connection.ConnectionMaker;
 import spring.user.domain.User;
 
 public abstract class UserDao {
 	
+	private ConnectionMaker connectionMaker;
+	
+	public UserDao(ConnectionMaker connectionMaker) {
+		this.connectionMaker = connectionMaker;
+	}
+	
 	
 	public int setUser(User user) throws ClassNotFoundException , SQLException {
-		Connection conn = getConnnection();
+		Connection conn = connectionMaker.getConnection();
 		
 		PreparedStatement pstmt = conn.prepareStatement(
 				"INSERT INTO USERS (ID, PW, NAME) VALUES (? , ? , ?)"
@@ -34,8 +40,8 @@ public abstract class UserDao {
 	
 	
 	public User getUser(String userId) throws ClassNotFoundException, SQLException {
+		Connection conn = connectionMaker.getConnection();
 		
-		Connection conn = getConnnection();
 		PreparedStatement pstmt = conn.prepareStatement(
 				"SELECT * FROM USERS WHERE ID = ?"
 				);
@@ -58,11 +64,4 @@ public abstract class UserDao {
 		return user; 
 	}
 	
-
-	/**
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	abstract protected Connection getConnnection() throws ClassNotFoundException, SQLException;	
 }
