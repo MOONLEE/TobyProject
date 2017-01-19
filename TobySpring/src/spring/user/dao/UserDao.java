@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import spring.user.domain.User;
 
-public class UserDao {
+public abstract class UserDao {
 	
 	
 	public int setUser(User user) throws ClassNotFoundException , SQLException {
@@ -64,16 +64,5 @@ public class UserDao {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	protected Connection getConnnection() throws ClassNotFoundException, SQLException {
-		Class.forName("org.mariadb.jdbc.Driver");
-		String url = "jdbc:mysql://127.0.0.1/springboard";
-		String id = "springboard";
-		String pw = "qwer!@34";
-		
-
-		Connection conn = DriverManager.getConnection(url, id, pw);		
-		
-		return conn;
-	}
-	
+	abstract protected Connection getConnnection() throws ClassNotFoundException, SQLException;	
 }
