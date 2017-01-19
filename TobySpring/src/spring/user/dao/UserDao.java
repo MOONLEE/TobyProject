@@ -59,7 +59,12 @@ public class UserDao {
 	}
 	
 
-	private Connection getConnnection() throws ClassNotFoundException, SQLException {
+	/**
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 */
+	protected Connection getConnnection() throws ClassNotFoundException, SQLException {
 		Class.forName("org.mariadb.jdbc.Driver");
 		String url = "jdbc:mysql://127.0.0.1/springboard";
 		String id = "springboard";
