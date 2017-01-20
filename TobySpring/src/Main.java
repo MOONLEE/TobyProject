@@ -1,5 +1,6 @@
-import spring.user.connection.BConnectionMaker;
-import spring.user.connection.ConnectionMaker;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import spring.user.dao.DaoFactory;
 import spring.user.dao.UserDao;
 import spring.user.domain.User;
@@ -9,10 +10,13 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			
-			UserDao dao = new DaoFactory().getUserDao();
+			
+			ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+			UserDao dao = context.getBean("getUserDao", UserDao.class);
+			
 			User newUser = new User();
 			
-			newUser.setId("t5");
+			newUser.setId("t6");
 			newUser.setPw("ttt");
 			newUser.setName("name");
 			
