@@ -1,20 +1,21 @@
-package spring.user.dao;
+package spring.ch1.user.dao;
 
 import java.sql.SQLException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import spring.user.connection.BConnectionMaker;
-import spring.user.connection.ConnectionMaker;
-import spring.user.connection.CountConnectionMaker;
+import spring.ch1.user.connection.BConnectionMaker;
+import spring.ch1.user.connection.ConnectionMaker;
+import spring.ch1.user.connection.CountConnectionMaker;
 @Configuration
 public class CountDaoFactory {
 	
 	@Bean
 	public UserDao getUserDao() throws ClassNotFoundException, SQLException { 
-		return new UserDao(getConnectionMaker()) {
-		};
+		UserDao userDao = new UserDao();
+		userDao.setConnectionMaker(getConnectionMaker());		
+		return userDao;
 	}
 	
 	@Bean

@@ -1,12 +1,12 @@
-package spring.user.dao;
+package spring.ch1.user.dao;
 
 import java.sql.SQLException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import spring.user.connection.BConnectionMaker;
-import spring.user.connection.ConnectionMaker;
+import spring.ch1.user.connection.BConnectionMaker;
+import spring.ch1.user.connection.ConnectionMaker;
 
 @Configuration
 public class DaoFactory {

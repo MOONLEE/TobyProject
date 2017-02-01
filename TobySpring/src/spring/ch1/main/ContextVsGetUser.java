@@ -1,8 +1,9 @@
+package spring.ch1.main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import spring.user.dao.DaoFactory;
-import spring.user.dao.UserDao;
+import spring.ch1.user.dao.DaoFactory;
+import spring.ch1.user.dao.UserDao;
 
 public class ContextVsGetUser {
 	public static void main(String[] args) {

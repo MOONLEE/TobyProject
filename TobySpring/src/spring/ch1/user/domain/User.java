@@ -1,4 +1,4 @@
-package spring.user.domain;
+package spring.ch1.user.domain;
 
 public class User {
 	private String id;

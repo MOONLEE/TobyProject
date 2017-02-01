@@ -1,23 +1,31 @@
-package spring.user.dao;
+package spring.ch1.user.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import spring.user.connection.ConnectionMaker;
-import spring.user.domain.User;
+import spring.ch1.user.connection.ConnectionMaker;
+import spring.ch1.user.domain.User;
 
-public abstract class UserDao {
+public class UserDao {
 	
 	private ConnectionMaker connectionMaker;
-	
+
+	public UserDao() {
+		
+	}
 	
 	public UserDao(ConnectionMaker connectionMaker) {
 		this.connectionMaker = connectionMaker;
+		
 	}
-	
-	
+		
+	public void setConnectionMaker(ConnectionMaker connectionMaker) {
+		this.connectionMaker = connectionMaker;
+	}
+
+
 	public int setUser(User user) throws ClassNotFoundException , SQLException {
 		Connection conn = connectionMaker.getConnection();
 		
